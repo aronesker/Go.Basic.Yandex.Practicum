@@ -4,7 +4,7 @@ import "fmt"
 
 var max int = 100
 var (
-	from = 10
+	from = 11
 	to   = 89
 )
 
@@ -16,7 +16,7 @@ func EditSlice(n int, m int) []int {
 	//Удаляет из слайса значения с индексами от n до m, возвращает результат
 	t := CreateSlice(max)
 	if len(t) != 0 && n < len(t) {
-		t = append(t[:n], t[m+1:]...)
+		t = append(t[:n-1], t[m+1:]...)
 	}
 	return t
 }
