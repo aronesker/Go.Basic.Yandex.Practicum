@@ -2,8 +2,6 @@ package main
 
 import "fmt"
 
-var array [1]int
-
 func main() {
 	fmt.Println(ReverseSlice(EditSlice(10, 89)))
 }
@@ -27,7 +25,7 @@ func ReverseSlice(s []int) []int {
 
 func CreateSlice(n int) []int {
 	//Создает слайс от 1 до n, возвращает результат
-	s := array[:0]
+	s := make([]int, 0, n)
 
 	for i := 1; i < (n + 1); i++ {
 		s = append(s, i)
