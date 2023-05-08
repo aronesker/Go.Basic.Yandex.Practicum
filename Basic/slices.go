@@ -18,14 +18,11 @@ func EditSlice(n int, m int) []int {
 }
 
 func ReverseSlice(s []int) []int {
-	//Разворачивает слайс в обратном порядке, возвращает результат
-	var h [20]int
-	j := h[:0]
-	for i := len(s); i > 0; i-- {
-		a := i - 1
-		j = append(j, s[a])
+	//Разворачивает переданный слайс в обратном порядке, возвращает результат
+	for i := range s[:len(s)/2] {
+		s[i], s[len(s)-i-1] = s[len(s)-i-1], s[i]
 	}
-	return j
+	return s
 }
 
 func CreateSlice(n int) []int {
