@@ -2,13 +2,19 @@ package main
 
 import "fmt"
 
+var max int = 100
+var (
+	from = 10
+	to   = 89
+)
+
 func main() {
-	fmt.Println(ReverseSlice(EditSlice(10, 89)))
+	fmt.Println(ReverseSlice(EditSlice(from, to)))
 }
 
 func EditSlice(n int, m int) []int {
 	//Удаляет из слайса значения с индексами от n до m, возвращает результат
-	t := CreateSlice(100)
+	t := CreateSlice(max)
 	if len(t) != 0 && n < len(t) {
 		t = append(t[:n], t[m+1:]...)
 	}
