@@ -24,35 +24,36 @@ const rawResp = `
 
 type (
 	Response struct {
+		// поля с тегами
 		Header ResponseHeader `json:"header"`
-		Data   ResponseData   `json:"data,omitempty"`
+		Data   ResponseData   `json:"data"`
 	}
 
 	ResponseHeader struct {
 		Code    int    `json:"code"`
-		Message string `json:"message,omitempty"`
+		Message string `json:"message"`
 	}
 
 	ResponseData []ResponseDataItem
 
 	ResponseDataItem struct {
-		Type       string                `json:"type"`
-		Id         int                   `json:"id"`
-		Attributes ResponseDataItemAttrs `json:"attributes"`
+		Type       string               `json:"type"`
+		Id         int                  `json:"id"`
+		Attributes ResponseDataItemAttr `json:"attributes"`
 	}
 
-	ResponseDataItemAttrs struct {
-		Email      string `json:"email"`
-		ArticleIds []int  `json:"article_ids"`
+	ResponseDataItemAttr struct {
+		Email       string `json:"email"`
+		Article_ids []int  `json:"article_isd"`
 	}
 )
 
 func ReadResponse(rawResp string) (Response, error) {
+	// код десериализации
 	resp := Response{}
 	if err := json.Unmarshal([]byte(rawResp), &resp); err != nil {
-		return Response{}, fmt.Errorf("JSON unmarshal: %w", err)
+		return Response{}, fmt.Errorf("JSONL: unmarshal: %w", err)
 	}
-
 	return resp, nil
 }
 
@@ -61,5 +62,5 @@ func main() {
 	if err != nil {
 		panic(err)
 	}
-	fmt.Printf("%+v\n", resp)
+	fmt.Printf("%+v/n", resp)
 }
